@@ -3,8 +3,8 @@ from pathlib import Path
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-original_path = 'grigio_piombo_patch/patchii2/abnormal/striscifini'
-destination_path = 'grigio_piombo_hougeslinesp'
+original_path = 'grigiopiombo/grigio_piombo_patch/patchii0/normal/'
+destination_path = 'grigiopiombo/testtodelete'
 
 format_of_your_images = 'jpg'
 format_of_your_images2 = 'png'
@@ -28,14 +28,11 @@ for f in all_the_files_jpg:
 
     # gaussian[gaussian>100]=255
     # gaussian[gaussian <= 100] = 0
-
-
     # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
     # cv2.imshow("test", gaussian)
     # cv2.waitKey(1)
     # gaussian = cv2.Canny(gaussian, 20, 255, L2gradient=True)
     # gaussian = cv2.medianBlur(p, 75)
-
     # gaussian[gaussian < 0.5 * np.max(gaussian)]=0
     #  transformation
     # Detect and draw lines
@@ -50,8 +47,6 @@ for f in all_the_files_jpg:
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     cv2.imwrite(f'{destination_path}/{f.name}', gaussian)
-
-
 
 for f in all_the_files_png:
     print(a)
@@ -90,24 +85,3 @@ for f in all_the_files_png:
     cv2.destroyAllWindows()
     cv2.imwrite(f'{destination_path}/{f.name}', gaussian)
 
-
-
-
-# sobelx = cv2.Sobel(gaussian,cv2.CV_64F,1,0,ksize=5)
-
-#ret,thresh1 = cv2.threshold(gaussian,50,255,cv2.THRESH_BINARY)
-#ret,thresh3 = cv2.threshold(gaussian,120,255,cv2.THRESH_TRUNC)
-
-# kernel = np.ones((3,3),np.uint8)
-
-# clean1 = cv2.morphologyEx(thresh1, cv2.MORPH_OPEN, np.ones((3, 3)))
-# clean3 = cv2.morphologyEx(thresh3, cv2.MORPH_OPEN, np.ones((3, 3)))
-#
-# closing1 = cv2.morphologyEx(clean1, cv2.MORPH_CLOSE, kernel)
-# closing3 = cv2.morphologyEx(clean3, cv2.MORPH_CLOSE, kernel)
-#
-# dilation1 = cv2.dilate(closing1,kernel,iterations = 2)
-# dilation3 = cv2.dilate(closing3,kernel,iterations = 2)
-#
-# # gradient1 = cv2.morphologyEx(dilation1, cv2.MORPH_GRADIENT, kernel)
-# # gradient3 = cv2.morphologyEx(dilation3, cv2.MORPH_GRADIENT, kernel)
